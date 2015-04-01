@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--
+//-----------------------------------------------------
+// Use as boiler plate code
+// Rory Hall
+//-----------------------------------------------------
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+		<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+		<link href="assets/css/arcmapLabels.css" rel="stylesheet" type="text/css">
+        <!--<link href="assets/css/jquery.mobile.flatui.css" rel="stylesheet" type="text/css"> -->
+        
+ 		<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+                
+	<title>Script Expressions for Labels in ArcMap</title>
+
+    
+    </head>
+    
+    
+    <body>
+	<!-- /homePage -->
+	<div data-role="page" id = "homePage" data-theme = "b"  >
+    
+		<div data-role="header" data-position="fixed">
+			<h1>Label Expressions <br>  for ArcMap</h1>
+		</div><!-- /header -->
+	
+    	<!-- /content -->
+        
+        <ul data-role='listview' data-theme='b' data-inset='true'>
+            <li data-icon='star'>
+            <a href='#vbscriptPage'><img src='assets/img/pythonLogo.png' class='ui-liicon'alt='VB Srcipting'/>
+            <h3 style='margin-left: 25px'>VB Scripting Expression</h3></a>
+            </li>
+            <li data-icon='star'>
+            <a href='#pythonPage'><img src='assets/img/pythonLogo.png' class='ui-liicon'alt='VB Srcipting'/>
+            <h3 style='margin-left: 25px'>Python Expression</h3></a>
+            </li>
+            <li data-icon='star'>
+            <a href='#htmlPage'><img src='assets/img/pythonLogo.png' class='ui-liicon'alt='VB Srcipting'/>
+            <h3 style='margin-left: 25px'>HTML Decorations</h3></a>
+            </li>
+            </ul>
+
+
+
+
+		<div data-role="content">
+        	Menu select here with logos and btns	
+			 ~ <a href="#vbscriptPage">link Logo Btn</a></li>Logo Btn</br>
+            explain</br></br>
+            Python Expressions ~ <a href="#pythonPage" data-icon = "grid">link Logo Btn</a></br>
+            explain
+            HTML ~ <a href="#htmlPage" data-icon = "grid">link Logo Btn</a></br>
+            explain
+        </div><!-- /content -->    
+    
+		<!-- /footer -->
+    	<div data-role="footer" data-position = "fixed" >        
+        	<nav data-role = "navbar">
+        		<ul>
+                    <li><a href="#aboutPage" data-icon = "grid">About</a></li>
+        		</ul>
+    		</nav>	        
+		</div><!-- /footer END-->
+        
+	</div><!-- /homePage END-->
+    
+
+	<!-- /vbscriptPage -->
+	<div data-role="page" id = "vbscriptPage" data-theme = "b"  >
+
+		<div data-role="header" data-position="fixed">
+			<h1>VB Scripting Expression</h1>        	
+		</div><!-- /header -->
+	
+    	<!-- /content -->
+		<div data-role="content">
+        
+        Examples of VB scripting for ArcMap
+        Set Expression checkbox to VB scripting
+        
+        <div data-role="collapsible" data-theme="a" data-content-theme="a">
+   		<h3>Formatting</h3>
+        
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3> Formatting Numbers</h3>
+                Rounding a number
+                Round ([AREA], 1)
+                "12374568.2"</br></br>
+                
+                Formatting currency
+                [COST] = "1234567"
+                FormatCurrency ([COST])
+                "1,234,567.00"</br></br>
+
+                FormatNumber([POP_98], 2)
+                Where 2 is the number of decimal places
+                Convert square feet to acresround to 2 Digits and append "Acres":
+                Round(([Area] * 0.00002295684), 2) & " Acres"
+                "45.26 Acres"</br></br>
+                
+                Calculate a Percentage
+                FormatNumber([RENTER_OCC] / [HOUSEHOLDS] ) * 100 & "%"
+                "27%"
+   		    </div>
+   		
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3>Formatting Text</h3>
+                "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that equal  21RP741159 and  51SP107866</br>                
+                 NOT "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866</br>                
+                "LOTPLAN" NOT IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866
+   		    </div>        
+                    
+		 </div>	 <!-- End of Formatting Region -->
+ 
+ 
+         <div data-role="collapsible" data-theme="a" data-content-theme="a">
+   		 	<h3>Functions</h3>
+            
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3>SELECT</h3>
+                The SELECT * FROM clause is hard coded in ArcMap
+                which restricts the SELECT clause to return all
+                of the columns in the table.
+                Opening the Select by Attribute Tool
+                SELECT * FROM name_of_feature.shp
+                (Select all columns from name_of_feature.shp table)
+                This restricts the use of other SQL functionality like:
+                DISTINCT, ORDER BY, GROUP BY.
+                These however can be used in sub queries
+   		    </div>
+   		
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3>IN</h3>
+                "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that equal  21RP741159 and  51SP107866</br>                
+                 NOT "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866</br>                
+                "LOTPLAN" NOT IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866
+   		    </div>
+   		</div>  <!-- End of Functions Region -->       
+                 
+		</div><!-- /content -->    
+
+		<!-- /footer -->
+    	<div data-role="footer" data-position = "fixed" >        
+        	<nav data-role = "navbar">
+        		<ul>
+                    <li><a href="#homePage" data-icon = "home">Home</a></li>
+    				<li><a href="#pythonPage" data-icon = "grid">Python</a></li>
+                    <li><a href="#htmlPage" data-icon = "grid">HTML</a></li>
+                    <li><a href="#aboutPage" data-icon = "grid">About</a></li>
+        		</ul>
+    		</nav>	        
+		</div><!-- /footer END-->
+   
+	</div><!-- /End vbscriptPage -->
+    
+    
+    
+    
+	<!-- /pythonPage -->
+	<div data-role="page" id = "pythonPage" data-theme = "b"  >
+
+		<div data-role="header" data-position="fixed">
+			<h1>Python Expressions</h1>        	
+		</div><!-- /header -->
+	
+    	<!-- /content -->
+		<div data-role="content">
+        
+        Examples of Python expressions to manipulate labels for ArcMap</br>
+        Set Expression checkbox to Python
+        
+        <div data-role="collapsible" data-theme="a" data-content-theme="a">
+   		<h3>Formatting</h3>
+        
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3> Formatting Numbers</h3>
+                Rounding a number
+                Round ([AREA], 1)
+                "12374568.2"</br></br>
+                
+                Formatting currency
+                [COST] = "1234567"
+                FormatCurrency ([COST])
+                "1,234,567.00"</br></br>
+
+                FormatNumber([POP_98], 2)
+                Where 2 is the number of decimal places
+                Convert square feet to acresround to 2 Digits and append "Acres":
+                Round(([Area] * 0.00002295684), 2) & " Acres"
+                "45.26 Acres"</br></br>
+                
+                Calculate a Percentage
+                FormatNumber([RENTER_OCC] / [HOUSEHOLDS] ) * 100 & "%"
+                "27%"
+   		    </div>
+   		
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3>Formatting Text</h3>
+                "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that equal  21RP741159 and  51SP107866</br>                
+                 NOT "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866</br>                
+                "LOTPLAN" NOT IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866
+   		    </div>        
+                    
+		 </div>	 <!-- End of Formatting Region -->
+ 
+ 
+         <div data-role="collapsible" data-theme="a" data-content-theme="a">
+   		 	<h3>Functions</h3>
+            
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3>SELECT</h3>
+                The SELECT * FROM clause is hard coded in ArcMap
+                which restricts the SELECT clause to return all
+                of the columns in the table.
+                Opening the Select by Attribute Tool
+                SELECT * FROM name_of_feature.shp
+                (Select all columns from name_of_feature.shp table)
+                This restricts the use of other SQL functionality like:
+                DISTINCT, ORDER BY, GROUP BY.
+                These however can be used in sub queries
+   		    </div>
+   		
+        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+   			  <h3>IN</h3>
+                "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that equal  21RP741159 and  51SP107866</br>                
+                 NOT "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866</br>                
+                "LOTPLAN" NOT IN ( '21RP741159' , '51SP107866' )
+                returns rows with values that are not 21RP741159 and  51SP107866
+   		    </div>
+   		</div>  <!-- End of Functions Region -->       
+                 
+		</div><!-- /content -->    
+
+		<!-- /footer -->
+    	<div data-role="footer" data-position = "fixed" >        
+        	<nav data-role = "navbar">
+        		<ul>
+                    <li><a href="#homePage" data-icon = "home">Home</a></li>
+    				<li><a href="#vbscriptPage" data-icon = "grid">VB Script</a></li>
+                    <li><a href="#htmlPage" data-icon = "grid">HTML</a></li>
+                    <li><a href="#aboutPage" data-icon = "grid">About</a></li>
+        		</ul>
+    		</nav>	        
+		</div><!-- /footer END-->
+   
+	</div><!-- /End pythonPage -->  
+    
+  
+  
+    
+    
+ 	<!-- /htmlPage -->
+	<div data-role="page" id = "htmlPage" data-theme = "b"  >
+
+		<div data-role="header" data-position="fixed">
+			<h1>HTML Decorations</h1>        	
+		</div><!-- /header -->
+	
+    	<!-- /content -->
+		<div data-role="content">
+        
+        <p>Examples of HTML Syntax to decorate labels in ArcMap </p>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Bold</h3>
+        &quot;&lt;BOL&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/BOL&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Italic <span class="italics">Just like this</span></h3>
+        &quot;&lt;ITA&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/ITA&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Underline  <span class="underline">downunder</span></h3>
+        &quot;&lt;UND&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/UND&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>All capitals<span class="allCaps"> London, Munich, New York</span></h3>
+        &quot;&lt;ACP&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/ACP&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Small capitals <span class="smallCaps">Wagga Wagga, Timbuktu</span></h3>
+        &quot;&lt;SCP&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/SCP&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Superscript &nbsp; &nbsp; &nbsp; super<span class="superScript">5</span></h3>
+        &quot;&lt;SUP&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/SUP&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Subscript</h3>
+        &quot;&lt;SUB&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/SUB&gt;&quot;<br>   
+   		</div>
+        
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Colour (<span class="red">R</span><span class="blue"><span class="green">G</span>B</span>)</h3>
+ 		# Hint use single quotes around the RGB colour value<br>
+        # You can use any value colour combination red, blue, green = {0-255}<br>
+        &quot;&lt;CLR red = '255'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>
+        &quot;&lt;CLR blue = '55'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>
+        &quot;&lt;CLR green = '100'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>  
+   		</div>               
+
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
+   		<h3>Colour (CMYK)</h3>
+   		# Hint use single quotes around the CMYK colour value<br>
+   		# You can use any value colour combination cyan, magenta, yellow, black = {1-100}<br>
+   		&quot;&lt;CLR magenta = '100'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>
+   		&quot;&lt;CLR cyan = '50'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>
+   		&quot;&lt;CLR yellow = '75'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>
+   		&quot;&lt;CLR black = '80'&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/CLR&gt;&quot;<br>  
+   		</div>          		
+	  </div><!-- /content -->    
+
+		<!-- /footer -->
+    	<div data-role="footer" data-position = "fixed" >        
+        	<nav data-role = "navbar">
+        		<ul>
+                    <li><a href="#homePage" data-icon = "home">Home</a></li>
+    				<li><a href="#vbscriptPage" data-icon = "grid">VB Script</a></li>
+                    <li><a href="#pythonPage" data-icon = "grid">Python</a></li>
+                    <li><a href="#aboutPage" data-icon = "grid">About</a></li>
+        		</ul>
+    		</nav>	        
+		</div><!-- /footer END-->
+   
+	</div><!-- /End htmlPage -->    
+    
+    
+    
+    
+    
+    <!-- aboutPage Dialog -->
+    <div id="aboutPage" data-role="popup" id="aboutPage" class="ui-content">
+
+      <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+ 
+        <img src="assets/img/android.gif" width="24" height="24" alt="Rory Hall Logo"style="margin-right:5px"/>
+        Rory Hall.
+        References
+      </div>
+    </div> 
+    <!-- /End aboutPage -->           
+
+
+</body>
+</html>

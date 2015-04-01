@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+	.italics {
+	font-style: italic;
+	color: #090;
+}
+    .underline {
+	text-decoration: underline;
+	color: #090;
+}
+    .smallCaps {
+	color: #090;
+	font-variant: small-caps;
+}
+    .allCaps {
+	color: #090;
+	text-transform: uppercase;	
+}
+
+    .superScript {
+	color: #090;
+	position: relative;
+	top: -0.5em;
+	font-size: 80%;		
+}
+	.red {
+	color: #F00;
+}
+	.blue {
+	color: #30F;
+}
+	.green {
+	color: #090;
+}
