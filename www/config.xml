@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="rory.hall.ArcMapLabelsSyntax" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Label Expressions for ArcMap</name>
+    <name>SQL Syntax</name>
     <description>
-        Label Expressions for ArcMap
+        SQL Syntax
     </description>
     <author email="hrory29@optusnet.com.au" href="http://bludogpi.com.au">
         Rory Hall
