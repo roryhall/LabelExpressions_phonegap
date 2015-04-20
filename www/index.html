@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!--
-//-----------------------------------------------------
-// Use as boiler plate code
-// Rory Hall
-//-----------------------------------------------------
+// Rory Hall April 2015
 -->
 <html>
     <head>
@@ -12,15 +9,14 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-		<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+		
 		<link href="assets/css/arcmapLabels.css" rel="stylesheet" type="text/css">
-        <!--<link href="assets/css/jquery.mobile.flatui.css" rel="stylesheet" type="text/css"> -->
+        <link href="assets/css/jquery.mobile.flatui.css" rel="stylesheet" type="text/css">
         
  		<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.mobile-1.4.5.min.js"></script>
                 
 	<title>Script Expressions for Labels in ArcMap</title>
-
     
     </head>
     
@@ -35,21 +31,14 @@
 	
     	<!-- /content -->
 		<div data-role="content">
-        	Some intro maybe??? <br>
-            
+        	Select from Menu <br>           
                     
         <ul data-role='listview' data-theme='b' data-inset='true'>
-            <li data-icon='star'>
-            <a href='#vbscriptPage'><img src='assets/img/VB_icon_flat.png'alt='VB Scripting' width="100%" height="98%" class='ui-liicon'/>
-            <h3 style='margin-left: 25px'>VB Scripting Expression</h3></a>
+            <li data-icon='bars'><a href='#vbscriptPage'><h3 style='margin-left: 25px'>VB Script Expressions</h3></a>
             </li>
-            <li data-icon='star'>
-            <a href='#pythonPage'><img src='assets/img/Python_icon_flat.png' alt='Python Expressions' width="100%" height="98%" class='ui-liicon'/>
-            <h3 style='margin-left: 25px'>Python Expression</h3></a>
+            <li data-icon='bars'><a href='#pythonPage'><h3 style='margin-left: 25px'>PYTHON Expressions</h3></a>
             </li>
-            <li data-icon='star'>
-            <a href='#htmlPage'><img src='assets/img/HTML_icon_flat.png' alt='HTML Decorations' width="100%" height="98%" class='ui-liicon'/>
-            <h3 style='margin-left: 25px'>HTML Decorations</h3></a>
+            <li data-icon='bars'><a href='#htmlPage'><h3 style='margin-left: 25px'>HTML Decorations</h3></a>
             </li>
         </ul>
 
@@ -71,50 +60,86 @@
 	<div data-role="page" id = "vbscriptPage" data-theme = "b"  >
 
 		<div data-role="header" data-position="fixed">
-			<h1>VB Scripting Expression</h1>        	
+			<h1>VB Scripting Expression Examples</h1>        	
 		</div><!-- /header -->
 	
     	<!-- /content -->
 		<div data-role="content">
-        
-        Examples of VB scripting for ArcMap
-        Set Expression checkbox to VB scripting
-        
-        <div data-role="collapsible" data-theme="a" data-content-theme="a">
+        # Set parser checkbox to VB scripting
+		</div><!-- /content -->   
+                
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
    		<h3>Formatting</h3>
         
-        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+        	<div data-role="collapsible" data-theme="b" data-content-theme="b">
    			  <h3> Formatting Numbers</h3>
-                Rounding a number
-                Round ([AREA], 1)
+              
+                Rounding a number</br>
+                Round ([AREA], 1)</br>
                 "12374568.2"</br></br>
                 
-                Formatting currency
-                [COST] = "1234567"
-                FormatCurrency ([COST])
-                "1,234,567.00"</br></br>
+                Formatting Currency</br>
+                [INCOME] = "63500"</br>
+                FormatCurrency ([INCOME])</br>
+                "63,500.00"</br></br>
 
-                FormatNumber([POP_98], 2)
-                Where 2 is the number of decimal places
-                Convert square feet to acresround to 2 Digits and append "Acres":
-                Round(([Area] * 0.00002295684), 2) & " Acres"
+                To 2 Decimal Places</br>
+                FormatNumber([POP_2015], 2)</br>
+                Convert square feet to acres, and append "Acres"</br>
+                Round(([Area] * 0.00002295684), 2) & " Acres"</br>
                 "45.26 Acres"</br></br>
                 
-                Calculate a Percentage
-                FormatNumber([RENTER_OCC] / [HOUSEHOLDS] ) * 100 & "%"
-                "27%"
+                Calculate a Percentage</br>
+                FormatNumber([REMNANT] / [CLEARED] ) * 100 & "%"</br>
+                "45%"
    		    </div>
    		
-        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+        	<div data-role="collapsible" data-theme="b" data-content-theme="b">
    			  <h3>Formatting Text</h3>
-                "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
-                returns rows with values that equal  21RP741159 and  51SP107866</br>                
-                 NOT "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
-                returns rows with values that are not 21RP741159 and  51SP107866</br>                
-                "LOTPLAN" NOT IN ( '21RP741159' , '51SP107866' )
-                returns rows with values that are not 21RP741159 and  51SP107866
-   		    </div>        
-                    
+              
+                <p>Concatenate Fields</br>
+               [REMNANT] & " " & [TYPE] </br>
+               "Of Concern 12.11.13"</br></br>
+
+                Concatenate a String</br>
+               "Lot Plan: " & [LOTPLAN] </br>
+               "Lot Plan: 154CP98453"</br></br>
+                              
+                Stack Labels</br>
+               [FIELD1] = "New"</br>
+               [FIELD2] = "Line"</br>
+               [FIELD1] & vbNewLine & [FIELD2]</br>
+                "New</br>
+                Line"</br></br>
+                
+                Stack Long Strings</br>
+               [LANDUSE] = "Degraded Irrigated Land"</br>
+               Replace ([LANDUSE], " ", vbNewLine</br>
+               "Degraded</br>
+                Irrigated</br>
+                Land"</br></br>
+                
+                </p>
+                <p>Change case<br>
+                  [CLIENT] = &quot;John Wayne&quot;<br>
+                  LCase ([CLIENT]), Returns &quot;john wayne&quot;<br>
+                Ucase([CLIENT]), Returns &quot;JOHN WAYNE&quot;</p>
+        	</div>        
+
+        	<div data-role="collapsible" data-theme="b" data-content-theme="b">
+   			  <h3>Formatting Dates & Time</h3>
+              
+              <p>FormatDateTime(&quot;1/07/1999&quot;, 1)<br><br>
+                0 Use system settings<br><br>
+                1 Long date format<br>
+                &quot;Friday, July 01, 1999&quot;<br><br>
+                2 Short date format<br>
+                &quot;1/7/99&quot;<br><br>
+                3 Long time format<br>
+                &quot;5:36:01 PM&quot;<br><br>
+                4 Short time format (24 hour clock)<br>
+              &quot;17:36&quot;</p>
+        	</div>                    
 		 </div>	 <!-- End of Formatting Region -->
  
  
@@ -145,7 +170,7 @@
    		    </div>
    		</div>  <!-- End of Functions Region -->       
                  
-		</div><!-- /content -->    
+ 
 
 		<!-- /footer -->
     	<div data-role="footer" data-position = "fixed" >        
@@ -168,19 +193,19 @@
 	<div data-role="page" id = "pythonPage" data-theme = "b"  >
 
 		<div data-role="header" data-position="fixed">
-			<h1>Python Expressions</h1>        	
+			<h1>Python Expression Examples</h1>        	
 		</div><!-- /header -->
 	
     	<!-- /content -->
 		<div data-role="content">
         
         Examples of Python expressions to manipulate labels for ArcMap</br>
-        Set Expression checkbox to Python
+        Set parser checkbox to Python
         
-        <div data-role="collapsible" data-theme="a" data-content-theme="a">
+        <div data-role="collapsible" data-theme="b" data-content-theme="b">
    		<h3>Formatting</h3>
         
-        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+        	<div data-role="collapsible" data-theme="b" data-content-theme="b">
    			  <h3> Formatting Numbers</h3>
                 Rounding a number
                 Round ([AREA], 1)
@@ -202,34 +227,69 @@
                 "27%"
    		    </div>
    		
-        	<div data-role="collapsible" data-theme="a" data-content-theme="a">
+        	<div data-role="collapsible" data-theme="b" data-content-theme="b">
    			  <h3>Formatting Text</h3>
-                "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
-                returns rows with values that equal  21RP741159 and  51SP107866</br>                
-                 NOT "LOTPLAN" IN ( '21RP741159' , '51SP107866' )
-                returns rows with values that are not 21RP741159 and  51SP107866</br>                
-                "LOTPLAN" NOT IN ( '21RP741159' , '51SP107866' )
-                returns rows with values that are not 21RP741159 and  51SP107866
+              
+               Concatenate Fields</br>
+               [LONG] + ", " + [LAT] </br>
+               <span class="green">alternative ~ better</span></br>
+               "%s , %s"  %( [LONG] , [LAT] ) </br>
+               <span class="green">alternative ~ best</span></br>
+               '{0},{1}'.format( [LONG] , [LAT])</br>
+               "149.950117, 24.969617"</br></br>
+               
+                Concatenate a String></br>
+               "State: " + [STATE] </br>
+               <span class="green">alternative ~ better</span></br>
+               "State: %s" %[STATE] </br>               
+               <span class="green">alternative ~ best</span></br>
+               "State: {0}.format([STATE])"</br>
+               "State: Victoria" <br></br>               
+               
+               Stacked Label</br>
+               [CITY] + "\n" + [STATE] </br>
+               "Melbourne <br>
+               Victoria"</br></br>              
+
+               String Case upper, lower....</br>
+               [CITY].upper() </br>
+               "MELBOURNE <br><br>
+               [CITY].lower() </br>
+               "melbourne <br><br>
+               [CITY].title() </br>
+               "Melbourne <br> <br>             
+
+               Replace string</br>
+               [STATE] = "Victoria"</br>
+               [COUNTRY] = "AUS"</br>
+               [STATE] + "\n" + [COUNTRY].replace("AUS", "Australia" </br>
+               "Victoria <br>
+                Australia"</br></br>               
    		    </div>        
                     
 		 </div>	 <!-- End of Formatting Region -->
  
  
          <div data-role="collapsible" data-theme="a" data-content-theme="a">
-   		 	<h3>Functions</h3>
+   		 	<h3>Functions ~ select &quot;Python&quot;</h3>
             
         	<div data-role="collapsible" data-theme="a" data-content-theme="a">
-   			  <h3>SELECT</h3>
-                The SELECT * FROM clause is hard coded in ArcMap
-                which restricts the SELECT clause to return all
-                of the columns in the table.
-                Opening the Select by Attribute Tool
-                SELECT * FROM name_of_feature.shp
-                (Select all columns from name_of_feature.shp table)
-                This restricts the use of other SQL functionality like:
-                DISTINCT, ORDER BY, GROUP BY.
-                These however can be used in sub queries
-   		    </div>
+   			  <h3>Increment values with complex concatenation</h3>
+   			    Codeblock<br>
+   			    <span class="green">rec = 0 # start value<br>
+				def autoIncrement():<br>
+				global rec<br>
+				pStart = 1 #adjust start value, if req'd <br>
+				pInterval = 1 adjust interval value, if req'd<br>
+				if (rec == 0):<br>
+				rec = pStart <br>
+				else: <br>
+				rec = rec + pInterval<br>
+				return rec</span><br>
+				Pre-Logic<br>
+				FEATURE =<br>
+				<span class="green">!FEATURE! + str(autoIncrement())</span>
+				</div>
    		
         	<div data-role="collapsible" data-theme="a" data-content-theme="a">
    			  <h3>IN</h3>
@@ -266,16 +326,18 @@
 	<div data-role="page" id = "htmlPage" data-theme = "b"  >
 
 		<div data-role="header" data-position="fixed">
-			<h1>HTML Decorations</h1>        	
+			<h1>HTML Decoration Examples</h1>        	
 		</div><!-- /header -->
 	
     	<!-- /content -->
 		<div data-role="content">
         
         <p>Examples of HTML Syntax to decorate labels in ArcMap </p>
-        
+                 		
+	    </div><!-- /content -->
+               
         <div data-role="collapsible" data-theme="a" data-content-theme="a">
-   		<h3>Bold&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="green">maybe not so <span class="bold">BEAUTIFUL</span></span></h3>
+   		<h3>Bold&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="green">not so <span class="bold">BEAUTIFUL</span></span></h3>
    		<h3> &quot;&lt;BOL&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/BOL&gt;&quot;<br>   
  		  </h3>
         </div>
@@ -291,7 +353,7 @@
    		</div>
         
         <div data-role="collapsible" data-theme="a" data-content-theme="a">
-   		<h3>All capitals<span class="allCaps">&nbsp;&nbsp; London, Munich, New York</span></h3>
+   		<h3>All capitals<span class="allCaps">&nbsp;&nbsp; London, Munich</span></h3>
         &quot;&lt;ACP&gt;&quot; &amp; [FIELD] &amp; &quot;&lt;/ACP&gt;&quot;<br>   
    		</div>
         
@@ -338,11 +400,11 @@
 
         <div data-role="collapsible" data-theme="a" data-content-theme="a">
    		<h3>Character Width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="green"><span class="charwidth">Wide Load</span></span></h3>
-        # May not be noticable of some mobile devices. It works in ArcMap :-)<br>
+        # May not be noticable on some mobile devices.<br>
+        Or with some Fonts. It works in ArcMap :-)<br>
         &lt;CHR&gt; width = &quot;100&quot; Wide load &lt;\CHR&gt;<br>   
    		</div>
-                 		
-	  </div><!-- /content -->    
+   
 
 		<!-- /footer -->
     	<div data-role="footer" data-position = "fixed" >        
@@ -363,7 +425,7 @@
     
     
     <!-- aboutPage Dialog -->
-    <div id="aboutPage" data-role="popup" id="aboutPage" class="ui-content">
+    <div id="aboutPage" data-role="popup" class="ui-content">
 
       <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
  
@@ -371,7 +433,7 @@
         Rory Hall.
         References
       </div>
-    </div> 
+   
     <!-- /End aboutPage -->           
 
 
